@@ -10,7 +10,7 @@ import {
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
-  Tooltip,
+  Tooltip
 } from '@chakra-ui/react';
 import { jwtDecode } from 'jwt-decode';
 
@@ -24,6 +24,7 @@ import '../styles.css'
 import { LoginContext } from '../context/LoginContext.js';
 import { useContext } from 'react';
 import { BiLogOut } from "react-icons/bi";
+
 
 
 export default function Navigation() {
@@ -71,7 +72,7 @@ export default function Navigation() {
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
 
-          <img justify={{ base: 'center', md: 'left' }} src="https://static.vecteezy.com/system/resources/previews/011/125/368/original/cute-calculator-icon-png.png" alt="logo" width={20}/>
+          <img justify={{ base: 'center', md: 'left' }} src="https://static.vecteezy.com/system/resources/previews/011/125/368/original/cute-calculator-icon-png.png" alt="logo" width={20} />
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
             <DesktopNav />
@@ -114,18 +115,18 @@ export default function Navigation() {
             isLoggedIn &&
             <Link to='/login'>
               <Tooltip label="Logout">
-                <Button
-                  fontWeight={600}
-                  color={'white'}
-                  bg={'red.400'}
+                <IconButton
+                  isRound={true}
+                  variant='solid'
+                  colorScheme='red'
                   _hover={{
-                    bg: 'red.300',
+                    background: "red.400",
                   }}
+                  aria-label='Done'
+                  fontSize='20px'
                   onClick={handleLogout}
-                >
-                  <BiLogOut />
-
-                </Button>
+                  icon={<BiLogOut />}
+                />
               </Tooltip>
             </Link>
 

@@ -6,7 +6,7 @@ from routes.user import user
 
 
 app = FastAPI()
-origins = ["http://localhost:5173", "https://composite-material-calculator.netlify.app"]
+origins = ["http://localhost:5173", "https://composite-material-calculator.vercel.app"]
 
 app.add_middleware(
     CORSMiddleware,
