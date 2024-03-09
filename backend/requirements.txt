@@ -1,0 +1,10 @@
+uvicorn
+fastapi
+pymongo
+python-jwt
+aiosmtplib
+passlib
+razorpay
+jose
+httpx
+PyJWT

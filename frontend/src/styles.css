@@ -1,0 +1,41 @@
+.active-link {
+    border-bottom: .1rem solid #2B6CB0;
+}
+
+
+@keyframes fadeInOut {
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.animate-flicker {
+    opacity: 0;
+    animation: fadeInOut 1s infinite;
+}
+
+
+.with-overlay {
+    position: relative;
+    z-index: 1;
+    background-image: url('https://wallpapercave.com/wp/wp2497498.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.with-overlay::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
