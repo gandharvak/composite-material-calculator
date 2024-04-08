@@ -132,6 +132,22 @@ async def unsubscribe(current_user: dict = Depends(utility.get_current_user)):
     return {"message": "Unsubscribed successfully", "isSubscribed": False, "token": access_token}
 
 
+@user.post("/trial-over", status_code=status.HTTP_200_OK)
+async def trial_over(current_user: dict = Depends(utility.get_current_user)):
+    if not current_user:
+        raise HTTPException(status_code=404, detail="User not found")
+    
+    # Update the `isFreeTrialOver` field in the database
+    user_collection.update_one({"_id": current_user["_id"]}, {"$set": {"isFreeTrialOver": True}})
+
+    # Generate a new access token with the updated `isFreeTrialOver` field
+    access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    access_token = utility.create_access_token(
+        data={"phoneNumber": current_user["phoneNumber"], "isFreeTrialOver": True, "isSubscribed": current_user["isSubscribed"]}, expires_delta=access_token_expires
+    )
+
+    return {"message": "Trial period marked as over", "isFreeTrialOver": True, "token": access_token}
+
 @user.post("/create_payment_order")
 async def create_payment_order(amount: int):
     try:
