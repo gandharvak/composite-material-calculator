@@ -24,6 +24,7 @@ import '../styles.css'
 import { LoginContext } from '../context/LoginContext.js';
 import { useContext } from 'react';
 import { BiLogOut } from "react-icons/bi";
+import { nanoid } from 'nanoid';
 
 
 
@@ -165,7 +166,7 @@ const MobileNav = () => {
   return (
     <Stack bg={useColorModeValue('white', 'gray.800')} p={4} display={{ md: 'none' }}>
       {NAV_ITEMS.map((navItem) => (
-        <Link to={navItem.href}>
+        <Link to={navItem.href} key={nanoid()}>
           <MobileNavItem key={navItem.label} {...navItem} />
         </Link>
       ))}

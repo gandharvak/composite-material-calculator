@@ -20,6 +20,7 @@ user = APIRouter()
 temp_user_collection = conn["users"]["temp_users"]
 user_collection = conn["users"]["permanent_users"]
 
+
 temp_user_collection.create_index("expiresAt", expireAfterSeconds=0)
 
 # @user.get("/", status_code=status.HTTP_200_OK)

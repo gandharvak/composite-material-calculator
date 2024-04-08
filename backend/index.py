@@ -1,9 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routes.user import user
-
-
-
+from routes.material import material
 
 app = FastAPI()
 origins = ["http://localhost:5173", "https://composite-material-calculator.vercel.app"]
@@ -17,4 +15,6 @@ app.add_middleware(
 )
 
 app.include_router(user)
+app.include_router(material)
+
 
