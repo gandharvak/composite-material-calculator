@@ -193,7 +193,7 @@ function Feedback() {
         }
         <Card p={4} mb={4}>
           <FormControl display="flex" flexDir="column" isRequired>
-            <FormLabel>{"9) Is there anything else you'd like to share about your experience with us?"}</FormLabel>
+            <FormLabel>{"Is there anything else you'd like to share about your experience with us?"}</FormLabel>
             <Textarea
               name="additionalComments"
               placeholder="Your comments"
