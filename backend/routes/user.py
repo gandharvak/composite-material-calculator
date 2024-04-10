@@ -1,5 +1,6 @@
 from fastapi import APIRouter, HTTPException, status, Depends
 from models.user import User
+from models.UpdateUser import UpdateUser
 from config.db import conn
 from schemas.user import userEntity, usersEntity
 from bson import ObjectId
@@ -33,15 +34,17 @@ temp_user_collection.create_index("expiresAt", expireAfterSeconds=0)
 #     return usersEntity(user_collection.find())
 
 
-# @user.get("/{id}", status_code=status.HTTP_200_OK)
-# async def get_user(id):
-#     return userEntity(user_collection.find_one({"_id":ObjectId(id)}))
+@user.get("/{id}", status_code=status.HTTP_200_OK)
+async def get_user(id):
+    return userEntity(user_collection.find_one({"_id":ObjectId(id)}))
 
 
-# @user.put('/', status_code=status.HTTP_200_OK)
-# async def update_user(id, user: User):
-#     user_collection.find_one_and_update({"_id": ObjectId(id)}, {"$set": dict(user)})
-#     return userEntity(user_collection.find_one({"_id": ObjectId(id)}))
+@user.patch("/{id}", status_code=status.HTTP_200_OK)
+async def update_user(id: str, user: UpdateUser):
+    update_data = user.dict(exclude_unset=True)
+    user_collection.find_one_and_update({"_id": ObjectId(id)}, {"$set": update_data})
+    return userEntity(user_collection.find_one({"_id": ObjectId(id)}))
+
 
 # @user.delete('/', status_code=status.HTTP_200_OK)
 # async def delete_user(id):

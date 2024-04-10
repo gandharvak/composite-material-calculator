@@ -239,4 +239,8 @@ const NAV_ITEMS = [
     label: 'Subscribe',
     href: '/subscribe',
   },
+  {
+    label: 'Profile',
+    href: '/profile',
+  },
 ];

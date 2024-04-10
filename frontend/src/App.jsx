@@ -5,6 +5,7 @@ import { Login, Home, Calculator, Feedback, Layout, SingUp, Subscribe, Popup } f
 
 import { LoginContext } from './context/LoginContext.js';
 import { PublicRoute, ProtectedRoute, AuthenticatedRoute } from './utils/Index.js'
+import Profile from './components/Profile.jsx';
 
 
 const router = createBrowserRouter([
@@ -54,6 +55,14 @@ const router = createBrowserRouter([
         element: (
           <AuthenticatedRoute>
             <Subscribe />
+          </AuthenticatedRoute>
+        ),
+      },
+      {
+        path: "/profile",
+        element: (
+          <AuthenticatedRoute>
+            <Profile />
           </AuthenticatedRoute>
         ),
       },
