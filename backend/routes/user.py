@@ -58,7 +58,7 @@ async def login_for_access_token(form_data: UserLogin):
     
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = utility.create_access_token(
-        data={"phoneNumber": user["phoneNumber"], "isFreeTrialOver": user["isFreeTrialOver"], "isSubscribed": user["isSubscribed"]}, expires_delta=access_token_expires
+        data={"id":user["id"], "phoneNumber": user["phoneNumber"], "isFreeTrialOver": user["isFreeTrialOver"], "isSubscribed": user["isSubscribed"]}, expires_delta=access_token_expires
     )
     return {"token": access_token}
 

@@ -18,9 +18,11 @@ import {
     useToast
 } from '@chakra-ui/react';
 import axios from 'axios';
+import { jwtDecode } from "jwt-decode";
 
 const ProfilePage = () => {
     const API_URL = import.meta.env.VITE_API_URL
+    const userId = jwtDecode(localStorage.getItem("token")).id;
     const toast = useToast();
 
 
@@ -39,7 +41,7 @@ const ProfilePage = () => {
     };
 
     const updateUser = async () => {
-        const url = 'http://127.0.0.1:8000/6613ca37b5a2bb7994185be3';
+        const url = `${API_URL}/${userId}`;
     
         try {
           const response = await axios.patch(url, profile);
@@ -64,8 +66,9 @@ const ProfilePage = () => {
 
     useEffect(() => {
         const fetchUserData = async () => {
+            const url = `${API_URL}/${userId}`;
             try {
-                const response = await axios.get(`${API_URL}/6613ca37b5a2bb7994185be3`);
+                const response = await axios.get(url);
                 setProfile(response.data);
                 setError('');  // Clear any previous errors
             } catch (err) {
