@@ -77,8 +77,8 @@ async def send_email(email_address: str, subject: str, content: str):
         message,
         hostname="smtp.gmail.com",  # Your SMTP server
         port=465,  # Your SMTP port
-        username="gandharvakulkarni2003@gmail.com",
-        password="clpd zwmx oibc lscp",
+        username="enter_your_email",
+        password="enter_app_password_here",
         use_tls=True,
     )
 
