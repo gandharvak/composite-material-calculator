@@ -3,9 +3,9 @@ import httpx
 
 
 async def sendOTP(otp, phoneNumber):
-    url = "https://www.fast2sms.com/dev/bulkV2"
+    url = "enter_url_here"
 
-    token = "L0SzKuhj15YNXgc6PqVEATDp9vlabd8Jsno34irtMRBCfQHeWwV5QNdAscoKFXLwktWRExMByYnPHG2S"
+    token = "enter_token_here"
 
     body = {
         "route": "otp",
